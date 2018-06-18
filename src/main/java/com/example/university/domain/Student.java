@@ -1,8 +1,10 @@
 package com.example.university.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -12,15 +14,18 @@ import java.util.List;
 
 /**
  * JPA Entity representing a student at the University.
- * <p>
+ *
  * Created by maryellenbowman
  */
 @Entity
-@Table(name = "STUDENT")
+@Table(name="STUDENT")
 public class Student {
     @Id
     @GeneratedValue
     private Integer studentId;
+
+    @Embedded
+    private Person attendee;
 
     @Column
     private boolean fullTime;
@@ -28,10 +33,8 @@ public class Student {
     @Column
     private Integer age;
 
-    @Embedded
-    private Person attendee;
-
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
 
     public Student(Person attendee, boolean fullTime, Integer age) {
@@ -70,7 +73,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "studentId=" + studentId + ", " + attendee + ", fullTime=" + fullTime +
+        return "Student{" + "studentId=" + studentId + ", " + attendee +  ", fullTime=" + fullTime +
                 ", age=" + age + "}\n";
     }
 }
