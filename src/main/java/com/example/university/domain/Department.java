@@ -1,24 +1,16 @@
 package com.example.university.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * JPA Entity for a Department of study at the University.
- *
+ * <p>
  * Created by maryellenbowman
  */
 @Entity
-@Table(name="Department")
+@Table(name = "Department")
 public class Department {
     @Id
     @GeneratedValue
@@ -27,16 +19,11 @@ public class Department {
     @Column
     private String name;
 
-    @OneToOne
-    private Staff chair;
-
-    @OneToMany(fetch = FetchType.EAGER,mappedBy="department",
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
 
-    public Department(String name, Staff chair) {
+    public Department(String name) {
         this.name = name;
-        this.chair = chair;
     }
 
     protected Department() {
@@ -54,24 +41,9 @@ public class Department {
         courses.add(course);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setChair(Staff chair) {
-        this.chair = chair;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
     @Override
     public String toString() {
-        return "Department{" +
-                "chair=" + chair +
-                ", name='" + name + '\'' +
-                ", id=" + id +
-                '}';
+        return "Department{" + "id=" + id + ", name='" + name + '\'' +
+                ", courses=" + courses + '}';
     }
 }
