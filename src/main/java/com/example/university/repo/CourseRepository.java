@@ -38,10 +38,10 @@ public interface CourseRepository extends CrudRepository<Course,Integer>{
 //      Common Querying Mistake
 //      Uncomment to Debug.
 //
-//    Course findByDeptName(String deptName);
+    Course findByDepartmentName(String deptName);
 //
-//    @Query("Select new com.example.university.view.CourseView" +
-//            "(c.name, c.instructor.member.lastName, c.department.name) from course c where c.name=?1")
-//    Course getCourseViewByName(String name);
+    @Query("Select new com.example.university.view.CourseView" +
+            "(c.name, c.instructor.member.lastName, c.department.name) from Course c where c.name=?1")
+    CourseView getCourseViewByName(String name);
 
 }
