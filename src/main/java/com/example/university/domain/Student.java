@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * JPA Entity representing a student at the University.
  *
- * Created by maryellenbowman
+
  */
 @Entity
 @Table(name="STUDENT")

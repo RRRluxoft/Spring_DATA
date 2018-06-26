@@ -1,7 +1,7 @@
 package com.example.university.view;
 
 /**
- * Created by maryellenbowman .
+  .
  */
 public class CourseView {
     private String name;

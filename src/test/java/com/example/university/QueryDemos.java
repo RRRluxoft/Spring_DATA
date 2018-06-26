@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * Demonstrate Various Querying Techniques with Spring Data Commons
  *
- * Created by maryellenbowman
+
  */
 
 @RunWith(SpringRunner.class)

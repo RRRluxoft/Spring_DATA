@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * JPA Entity for a Course offered at the University.
  *
- * Created by maryellenbowman.
+ .
  */
 @Entity
 @Table(name="COURSE")

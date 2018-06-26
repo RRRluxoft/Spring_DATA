@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * DataSource Management for the Courses at the University.
  *
- * Created by maryellenbowman
+
  */
 public interface CourseRepository extends CrudRepository<Course,Integer>{
 

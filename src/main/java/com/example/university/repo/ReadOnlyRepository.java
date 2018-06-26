@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  * Interface for declaring Read-Only Query Repositories.
  *
- * Created by maryellenbowman
+
  */
 @NoRepositoryBean
 public interface ReadOnlyRepository<T, ID extends Serializable> extends Repository<T,ID > {

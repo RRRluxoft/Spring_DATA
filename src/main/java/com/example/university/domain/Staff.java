@@ -5,7 +5,7 @@ import javax.persistence.*;
 /**
  * JPA Entity representing a staff member of a department.
  *
- * Created by maryellenbowman
+
  */
 @Entity
 @Table(name="Staff_member")

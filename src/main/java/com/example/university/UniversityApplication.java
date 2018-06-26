@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Main Spring Boot Class for the University Application.
  * On Startup Initialize Database with Students, Staff, Courses, and Departments.
  *
- * Created by maryellenbowman
+
  */
 @SpringBootApplication
 public class UniversityApplication implements CommandLineRunner{
