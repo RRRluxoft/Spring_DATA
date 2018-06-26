@@ -1,32 +1,25 @@
 package com.example.university.domain;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * JPA Entity for a Department of study at the University.
- *
-
+ * Mongo Document for a Department of study at the University.
+ * <p>
  */
-@Entity
-@Table(name="Department")
+@Document
 public class Department {
     @Id
-    @GeneratedValue
     private Integer id;
 
-    @Column
     private String name;
 
-    @OneToOne
+    @DBRef(db = "chair")
     private Staff chair;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy="department",
-            cascade = CascadeType.ALL)
-    private List<Course> courses = new ArrayList<>();
-
-    public Department(String name, Staff chair) {
+    public Department(Integer id, String name, Staff chair) {
+        this.id = id;
         this.name = name;
         this.chair = chair;
     }
@@ -42,9 +35,6 @@ public class Department {
         return name;
     }
 
-    public void addCourse(Course course) {
-        courses.add(course);
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -54,16 +44,12 @@ public class Department {
         this.chair = chair;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
     @Override
     public String toString() {
         return "Department{" +
-                "chair=" + chair +
+                "id=" + id +
                 ", name='" + name + '\'' +
-                ", id=" + id +
+                ", chair=" + chair +
                 '}';
     }
 }

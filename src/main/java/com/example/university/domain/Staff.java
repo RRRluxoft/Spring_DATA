@@ -1,27 +1,28 @@
 package com.example.university.domain;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 
 /**
- * JPA Entity representing a staff member of a department.
- *
-
+ * Mongo Document representing a staff member of a department.
+ * <p>
+ * Created by maryellenbowman
  */
-@Entity
-@Table(name="Staff_member")
+@Document
 public class Staff {
     @Id
-    @GeneratedValue
     private Integer id;
 
-    @Embedded
     private Person member;
 
-    public Staff(Person member) {
+    public Staff(Integer id, Person member) {
+        this.id = id;
         this.member = member;
     }
 
-    protected Staff() {
+    public Integer getId() {
+        return id;
     }
 
     public Person getMember() {
